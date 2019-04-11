@@ -21,7 +21,9 @@ class Controller:
     @returns solution
     """
     def runAlgo(self):
-        pass
+        for epoch in range(self.noEpochs):
+            for iteration in range(self.noIterations):
+                pass
 
     """
     Run parameters are read from file
