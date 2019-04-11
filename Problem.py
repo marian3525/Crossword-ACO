@@ -10,9 +10,10 @@ class Problem:
         self.sizeX = 0
         self.sizeY = 0
         # list of (word_str, (Point(boardx_start, boardy_start), Point(boardx_end, boardy_end))
-        self.words = []
+        self.gaps = []
         self.words_str = []
-        self.loadProblem("blanks3*3.in")
+
+        self.loadProblem("data.in")
         # the restrictions are populated and checked when inserting word strings into an individual's list of words
 
     def loadProblem(self, filename):
@@ -34,7 +35,7 @@ class Problem:
         self.words_str = f.readline().split(",")
 
         # build a temp matrix and count the words on vertical/horiz
-        matrix = [[] for i in range(self.sizeY)]
+        matrix = [[] for _ in range(self.sizeY)]
 
         for l in matrix:
             for i in range(self.sizeY):
@@ -48,6 +49,8 @@ class Problem:
 
         i_s_line = 0
         j_s_line = 0
+
+        gap_id = 0
 
         for i in range(self.sizeY):
             for j in range(self.sizeX):
@@ -66,7 +69,8 @@ class Problem:
                         point_start = Point(j_s_line, i_s_line)
                         point_end = Point(j_e_line, i_e_line)
 
-                        self.words.append(Gap(word_str, size, point_start, point_end))
+                        self.gaps.append(Gap(word_str, size, point_start, point_end, gap_id))
+                        gap_id += 1
 
                     startedWordLine = False
 
@@ -88,7 +92,8 @@ class Problem:
                         point_start = Point(j_s_line, i_s_line)
                         point_end = Point(j_e_line, i_e_line)
 
-                        self.words.append(Gap(word_str, size, point_start, point_end))
+                        self.gaps.append(Gap(word_str, size, point_start, point_end, gap_id))
+                        gap_id += 1
                     startedWordLine = False
 
         f.close()

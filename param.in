@@ -1,0 +1,7 @@
+alpha=1.9
+beta=0.9
+noAnts=4
+noEpochs=10
+noIterations=4
+evaporationCoef=0.05
+q0=0.5

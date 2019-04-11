@@ -1,8 +1,10 @@
-import Point as Point
-
+from Point import Point
 
 class Gap:
-    def __init__(self, word, size, point_start, point_end):
+
+    def __init__(self, word, size, point_start, point_end, id):
+        # unique id to mark the node
+        self.id = 0
         self.word = word
         self.point_start = point_start
         self.point_end = point_end
